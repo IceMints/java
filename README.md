@@ -7,3 +7,6 @@ Payroll GUI (src)
 This project calculates the pay of the employee based on the rate and the
 hours worked, inputed by the user. It will also calculate the number
 of employees paid, total pay, average pay.
+
+Employee Project
+Create, update and delete java project using Java Server Faces, html, CSS, a login screen and mySQL database.
