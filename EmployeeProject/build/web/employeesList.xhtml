@@ -1,0 +1,106 @@
+
+<!--
+List Employees from database
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+        <title>PM Employee List</title>
+    <style type="text/css">
+        .tableUpdated {
+        	width: 90% !important;
+        	margin: 17px 58px 0 !important;
+        }
+        .btnSpace {
+        	margin: 17px;
+        }     
+    </style>
+</h:head>
+<h:body>
+    <img src="img/logo.jpg"/> 
+   
+    <center><h2><h:outputText value="Employee Records"/></h2></center>
+    <h:form id="employeeForm">
+         <h:commandButton action="login.xhtml?faces-redirect=true" value="Logout" class="btn btn-info btnSpace" />
+        
+            <div class="col-sm-10">
+         <h:commandButton action="createEmployee.xhtml?faces-redirect=true" value="Add Employee" class="btn btn-primary btnSpace" />
+          <h:commandButton action="projectsList.xhtml?faces-redirect=true" value="Projects" class="btn btn-primary btnSpace" />
+           <h:commandButton action="departmentsList.xhtml?faces-redirect=true" value="Departments" class="btn btn-primary btnSpace" />
+            <h:commandButton action="Searches.xhtml?faces-redirect=true" value="Search" class="btn btn-primary btnSpace" />
+            </div>
+         
+         
+         
+         
+        <h:dataTable id="employeeTable" binding="#{table}" value="#{employeeBean.employeesList()}" var="employee" class="table table-striped table-hover table-bordered tableUpdated">
+           <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{table.rowIndex+1}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">First Name</f:facet>
+                <h:outputText value="#{employee.firstName}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Last Name</f:facet>
+                <h:outputText value="#{employee.lastName}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Salary</f:facet>
+                <h:outputText value="#{employee.salary}" />
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Position</f:facet>
+                <h:outputText value="#{employee.position}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Address</f:facet>
+                <h:outputText value="#{employee.address1}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Address</f:facet>
+                <h:outputText value="#{employee.address2}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">City</f:facet>
+                <h:outputText value="#{employee.city}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">State</f:facet>
+                <h:outputText value="#{employee.state}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Zip</f:facet>
+                <h:outputText value="#{employee.zipCode}" />
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Department</f:facet>
+                <h:outputText value="#{employee.departmentName}" />
+            </h:column>
+           
+            <h:column>
+                <f:facet name="header">Project</f:facet>
+                <h:outputText value="#{employee.projectName}" />
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Update</f:facet>
+                <h:commandButton action="#{employeeBean.editEmployeeRecord(employee.employeeID)}" value="Edit" class="btn btn-success" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:commandLink onclick="if (!confirm('Do you really want to do that?')) return false" 
+                               action="#{employeeBean.deleteEmployeeRecord(employee.employeeID)}" value="Delete" class="btn btn-danger" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

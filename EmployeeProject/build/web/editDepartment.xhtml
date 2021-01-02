@@ -1,0 +1,53 @@
+<!--
+Edit Department
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Edit PM Department Form</title>
+    <style type="text/css">
+        .updateBtnStyle {
+        	width: 80px !important;        	
+        }
+    </style>
+</h:head>
+<h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                 <div class="col-sm-2">
+                      <img src="img/logo.jpg"/>
+                </div>
+                <div class="col-sm-2"></div>      
+                <h2 style="text-align: center" class="col-sm-4">Editing PM Department</h2>
+            </div>
+            
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="departmentName" class="control-label col-sm-2">Department Name:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="departmentName-id" value="#{editRecordObj.departmentName}" class="form-control"
+                                 required = "true" 
+                                 requiredMessage = "Department name is required"
+                                 validatorMessage = "Department name 40 character limit exceeded">
+                        <f:validateLength maximum = "40"/>
+                    </h:inputText>
+                </div>
+            </div>
+            
+          
+           
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <h:commandButton value="Update" action="#{employeeBean.updateDepartmentDetails(editRecordObj)}" class="btn btn-primary updateBtnStyle" />
+                </div>
+                  <h:link outcome="departmentsList" value="Exit without updating" class="btn btn-primary" />
+            </div>
+        </h:form>
+    </h:body>
+</html>

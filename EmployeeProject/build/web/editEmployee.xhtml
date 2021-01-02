@@ -1,0 +1,166 @@
+<!--
+Edit Employee
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>Edit PM Employee Form</title>
+    <style type="text/css">
+        .updateBtnStyle {
+        	width: 80px !important;        	
+        }
+    </style>
+</h:head>
+<h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                 <div class="col-sm-2">
+                      <img src="img/logo.jpg"/>
+                </div>
+                <div class="col-sm-2"></div>      
+                <h2 style="text-align: center" class="col-sm-4">Editing PM Employee Form</h2>
+            </div>
+            
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="firstName" class="control-label col-sm-2">First Name:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="firstName-id" value="#{editRecordObj.firstName}" class="form-control"
+                                 required = "true" 
+                                 requiredMessage = "First name is required"
+                                 validatorMessage = "First name 30 character limit exceeded">
+                        <f:validateLength maximum = "30"/>
+                    </h:inputText>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <h:outputLabel for="lastName" class="control-label col-sm-2">Last Name:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="lastName-id" value="#{editRecordObj.lastName}" class="form-control"
+                      required = "true" requiredMessage="Last name is required"
+                             validatorMessage = "Last name 30 character limit exceeded">
+                    <f:validateLength maximum ="30"/>     
+                </h:inputText>           
+                </div>
+            </div>
+              <div class="form-group">
+            <h:outputLabel for="salary" class="control-label col-sm-2">Salary:</h:outputLabel>
+            <div class="col-sm-2">
+                <h:inputText id="salary-id" value="#{editRecordObj.salary}" class="form-control" 
+                             validatorMessage = "Employee salary is not between 0 and 100,000">
+                    <f:convertNumber pattern="#0.00"/>
+                    <f:validateLongRange minimum ="0" maximum = "100000"/>
+                   
+                </h:inputText>
+            </div>
+        </div>    
+        
+        <div class="form-group">
+            <h:outputLabel for="position" class="control-label col-sm-2">Position:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="position-id" value="#{editRecordObj.position}" class="form-control" 
+                             required = "true" 
+                             requiredMessage = "Position is required" 
+                             validatorMessage="Position 30 character limit exceeded">
+                    <f:validateLength maximum ="30" />
+                     
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="address1" class="control-label col-sm-2">Address:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="address1-id" value="#{editRecordObj.address1}" class="form-control" 
+                             required = "true" 
+                             requiredMessage="Address is required"
+                             validatorMessage = "Address 80 character limit exeeded">
+                    <f:validateLength maximum ="80"/>
+                    
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="address2" class="control-label col-sm-2">Address:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="address2-id" value="#{editRecordObj.address2}" class="form-control" 
+                             validatorMessage = "Employee Address needs to stay within 80 characters">
+                    <f:validateLength maximum = "80"/>
+                     
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="city" class="control-label col-sm-2">City:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="city-id" value="#{editRecordObj.city}" class="form-control" 
+                             required = "true" 
+                             requiredMessage = "City is required" 
+                             validatorMessage="City character limit exceeded 30">
+                    <f:validateLength maximum ="30" />
+                    
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="state" class="control-label col-sm-2">State:</h:outputLabel>
+            <div class="col-sm-1">
+                <h:inputText id="state-id" value="#{editRecordObj.state}" class="form-control" 
+                             required = "true" 
+                             requiredMessage="State is required"
+                             validatorMessage = "State abbrev exeeded 2 characters" >
+                    <f:validateLength maximum ="2"/>
+                  
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="zipcode" class="control-label col-sm-2">Zip Code:</h:outputLabel>
+            <div class="col-sm-4">
+                <h:inputText id="zipCode-id" value="#{editRecordObj.zipCode}" class="form-control" 
+                             required = "true" 
+                             requiredMessage="Zip Code is required"
+                             validatorMessage = "Zip Code needs to stay within 10 characters">
+                    <f:validateLength maximum = "10"/>
+                    
+                </h:inputText>
+            </div>
+        </div>
+        <div class="form-group">
+            <h:outputLabel for="department" class="control-label col-sm-2">Department:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneMenu id ="departmentName-id" value ="#{editRecordObj.departmentName}" 
+                                      validatorMessage ="Department required" >       
+                        <f:selectItem itemLabel ="-- Select --" noSelectionOption ="true"/>
+                        <f:selectItems value="#{formDataBean.departmentName_List}"/>
+                        <f:validateRequired/>
+                    </h:selectOneMenu>
+                </div>
+        </div>
+           
+        <div class="form-group">
+            <h:outputLabel for="project" class="control-label col-sm-2">Project:</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneMenu id ="projectName-id" value ="#{editRecordObj.projectName}" validatorMessage ="Project required">
+                        <f:selectItem itemLabel ="-- Select --" noSelectionOption ="true"/>
+                        <f:selectItems value="#{formDataBean.projectName_List}"/>
+                        <f:validateRequired/>
+                    </h:selectOneMenu>
+                </div>
+        </div>
+    
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <h:commandButton value="Update" action="#{employeeBean.updateEmployeeDetails(editRecordObj)}" class="btn btn-primary updateBtnStyle" />
+                </div>
+                  <h:link outcome="employeesList" value="Exit without updating" class="btn btn-primary" />
+            </div>
+        </h:form>
+    </h:body>
+</html>
